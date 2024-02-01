@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  api:
+    container_name: ordem-compras-api
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/node/app
+      #- /home/node/app/node_modules #volume anonymous 
+    depends_on:
+      - db
+    command: bash -c "./wait-for-it.sh"
+    networks:
+      - nwads
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "15432:80"
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "user@domain.com"
+      PGADMIN_DEFAULT_PASSWORD: 123
+    networks:
+      - nwads
+  db:
+    container_name: ordem-compras-db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: ordemCompras
+    networks:
+      - nwads
+    volumes:
+      - ./../db/ordemCompras/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  #tests:
+  #  container_name: app-tests
+  #  build: .
+  #  volumes:
+  #    - .:/usr/app
+  #  command: npm run test:watch
+networks:
+  nwads:
+    driver: bridge
+volumes:
+  data:
