@@ -24,50 +24,17 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Este repositório contém a aplicação "Ordem Compras" e utiliza o Docker Compose para facilitar o ambiente de desenvolvimento. Esta aplicação consiste em uma API, um banco de dados PostgreSQL, e uma interface administrativa PGAdmin4.
 
-## Installation
 
-```bash
-$ npm install
-```
+## Requisitos
 
-## Running the app
+- Docker
+- Docker Compose
 
-```bash
-# development
-$ npm run start
+## Inicialização
+  ```
+  docker-compose up
 
-# watch mode
-$ npm run start:dev
+  ```
 
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
