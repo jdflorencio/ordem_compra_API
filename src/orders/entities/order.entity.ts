@@ -1,37 +1,29 @@
-import { Product } from 'src/products/entities/product.entity';
-import { Column, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 export enum OrderStatus {
   PENDING = 'pendinng',
   PAID = 'paid',
   FAILED = 'failed',
 }
-
+@Entity()
 export class Order {
+  @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   total: number;
+
+  @Column()
   client_id: number;
+
+  @Column()
   status: OrderStatus = OrderStatus.PENDING;
 
+  @CreateDateColumn()
   created_at: Date;
-}
-
-export class OrderItem {
-  @PrimaryGeneratedColumn('uuid')
-  id: number;
-
-  @Column()
-  quantity: number;
-
-  @Column()
-  price: number;
-
-  @Column()
-  product: Product;
-
-  @Column()
-  product_id: string;
-
-  @Column()
-  order: Order;
 }
